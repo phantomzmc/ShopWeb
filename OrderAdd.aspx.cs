@@ -9,8 +9,8 @@ using System.Web.UI.WebControls;
 
 namespace ShopCafeWebForm
 {
-   
-    public partial class OrderAdd : BaseController 
+
+    public partial class OrderAdd : BaseController
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +23,7 @@ namespace ShopCafeWebForm
             {
                 if (string.IsNullOrEmpty(productName.Text))
                 {
-                    showAlertError("null Name","not name");
+                    showAlertError("null Name", "not name");
                     return;
                 }
                 if (string.IsNullOrEmpty(productPrice.Text))
@@ -62,7 +62,7 @@ namespace ShopCafeWebForm
                 showAlertError("alertErr", ex.Message);
             }
 
-            
+
         }
 
         private void showAlertSuccess(string v1, string v2)
@@ -80,5 +80,6 @@ namespace ShopCafeWebForm
             System.Diagnostics.Debug.WriteLine("You click me ..................");
             System.Diagnostics.Trace.WriteLine("You click me ..................");
         }
+    }
         
 }

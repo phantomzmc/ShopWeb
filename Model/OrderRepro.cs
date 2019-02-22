@@ -49,7 +49,7 @@ namespace ShopCafeWebForm
         public void deleteOrder(int id)
         {
             SqlConnection conn = new SqlConnection(strConnect);
-            string cmdDel = "DELETE FROM Product WHERE id = " + id;
+            string cmdDel = "DELETE FROM Product WHERE ProductID = " + id;
             Debug.WriteLine(id);
             callDb(cmdDel);
         }

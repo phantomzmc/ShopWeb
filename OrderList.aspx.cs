@@ -51,15 +51,14 @@ namespace ShopCafeWebForm
                 showAlertError("alertErr", ex.Message);
             }
         }
-
-        private void showAlertError(string v, string message)
+        void showAlertSuccess(string key, string msg)
         {
-            throw new NotImplementedException();
+            ClientScript.RegisterStartupScript(GetType(), key, "showAlertSuccess('" + msg + "');", true);
         }
 
-        private void showAlertSuccess(string v1, string v2)
+        void showAlertError(string key, string msg)
         {
-            throw new NotImplementedException();
+            ClientScript.RegisterStartupScript(GetType(), key, "showAlertError('" + msg + "');", true);
         }
     }
 }
