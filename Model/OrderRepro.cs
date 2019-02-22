@@ -40,14 +40,8 @@ namespace ShopCafeWebForm
 
         public void insertOrder(ModelOrder data)
         {
-            Debug.WriteLine(data.ProductName);
-            Debug.WriteLine(data.ProductPrice);
-            Debug.WriteLine(data.ProductDetail);
-            Debug.WriteLine(data.TypeProduct);
-
-
-            SqlConnection conn = new SqlConnection(strConnect); 
-            string cmdTextRaw = "INSERT INTO Product(ProductName,ProductPrice,ProductDatail,TypeID) VALUES ('"+data.ProductName+"',"+data.ProductPrice+",'"+data.ProductDetail+"',"+data.TypeProduct+")";
+            SqlConnection conn = new SqlConnection(strConnect);
+            string cmdTextRaw = "INSERT INTO Product(ProductName,ProductPrice,ProductDatail,TypeID) VALUES ('" + data.ProductName + "'," + data.ProductPrice + ",'" + data.ProductDetail + "'," + data.TypeProduct + ")";
             Debug.WriteLine(cmdTextRaw);
             callDb(cmdTextRaw);
         }

@@ -16,6 +16,20 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/StyleSheet.css" rel="stylesheet" />
+    <script type="text/javascript">
+        function showAlertSuccess(msg) {
+            $("#success-alert").text(msg);
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#success-alert").slideUp(500);
+            });
+        }
+        function showAlertError(msg) {
+            $("#danger-alert").text(msg);
+            $("#danger-alert").fadeTo(2000, 500).slideUp(500, function () {
+                $("#danger-alert").slideUp(500);
+            });
+        }
+    </script>
 </head>
 <body>
     <form runat="server">
@@ -62,6 +76,8 @@
         </div>
         
         <div class="container body-content">
+            <div class="alert alert-success" id="success-alert"></div>
+            <div class="alert alert-danger" id="danger-alert"></div>
              <asp:ContentPlaceHolder  ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>

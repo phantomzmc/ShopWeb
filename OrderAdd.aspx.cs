@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,25 +18,52 @@ namespace ShopCafeWebForm
 
         protected void submit_Click(object sender, EventArgs e)
         {
-
-            OrderRepro movieRepo = new OrderRepro();
-
-            ModelOrder data = new ModelOrder()
+            try
             {
-                ProductName = Convert.ToString(productName.Text),
-                ProductPrice = Convert.ToInt16(productPrice.Text) ,
-                ProductDetail = Convert.ToString(productDetail.Text),
-                TypeProduct = Convert.ToInt16(typeProduct.Text),
-            };
-            movieRepo.insertOrder(data);
-        }
+                if (string.IsNullOrEmpty(productName.Text))
+                {
+                    showAlertError("null Name","not name");
+                    return;
+                }
+                else
+                {
+                    OrderRepro movieRepo = new OrderRepro();
+                    ModelOrder data = new ModelOrder()
+                    {
+                        ProductName = Convert.ToString(productName.Text),
+                        ProductPrice = Convert.ToInt16(productPrice.Text),
+                        ProductDetail = Convert.ToString(productDetail.Text),
+                        TypeProduct = Convert.ToInt16(typeProduct.Text),
+                    };
+                    movieRepo.insertOrder(data);
+                    showAlertSuccess("alertSuccess", "Insert success");
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                showAlertError("alertSqlErr", sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                showAlertError("alertErr", ex.Message);
+            }
 
+            
+        }
 
         protected void cancel_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("You click me ...................");
             System.Diagnostics.Debug.WriteLine("You click me ..................");
             System.Diagnostics.Trace.WriteLine("You click me ..................");
+        }
+        void showAlertSuccess(string key, string msg)
+        {
+            ClientScript.RegisterStartupScript(GetType(), key, "showAlertSuccess('" + msg + "');", true);
+        }
+
+        void showAlertError(string key, string msg)
+        {
+            ClientScript.RegisterStartupScript(GetType(), key, "showAlertError('" + msg + "');", true);
         }
     }
 }

@@ -1,2 +1,11 @@
 ﻿body {
 }
+div#success-alert, div#danger-alert {
+    width: 80%;
+    position: fixed;
+    margin: 5px auto;
+    left: 0;
+    right: 0;
+    display: none;
+    z-index: 100;
+}
