@@ -7,6 +7,17 @@
                         <asp:BoundField DataField="ProductID" HeaderText="ProductID"/>
                         <asp:BoundField DataField="ProductName" HeaderText="ProductName"/>
                         <asp:BoundField DataField="ProductPrice" HeaderText="ProductPrice"/>
+                        <asp:TemplateField HeaderText="ลบ">
+                        <ItemTemplate>
+                            <asp:Button
+                                CssClass="btn btn-danger"
+                                OnClientClick="return confirm('คุณต้องการลบข้อมูลรายการนี้ใช่หรือไม่ ?');"
+                                OnClick="btnDelete_Click"
+                                Text="Delete"
+                                ID="btnDelete"
+                                runat="server" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                     </Columns>
             </asp:GridView>
         </div>

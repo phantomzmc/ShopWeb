@@ -45,6 +45,14 @@ namespace ShopCafeWebForm
             Debug.WriteLine(cmdTextRaw);
             callDb(cmdTextRaw);
         }
+
+        public void deleteOrder(int id)
+        {
+            SqlConnection conn = new SqlConnection(strConnect);
+            string cmdDel = "DELETE FROM Product WHERE id = " + id;
+            Debug.WriteLine(id);
+            callDb(cmdDel);
+        }
     }
     public class ModelOrder
     {

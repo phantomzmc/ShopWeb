@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopCafeWebForm.Controller;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Web.UI.WebControls;
 namespace ShopCafeWebForm
 {
    
-    public partial class OrderAdd : System.Web.UI.Page
+    public partial class OrderAdd : BaseController 
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -64,19 +65,20 @@ namespace ShopCafeWebForm
             
         }
 
+        private void showAlertSuccess(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void showAlertError(string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
+
         protected void cancel_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine("You click me ..................");
             System.Diagnostics.Trace.WriteLine("You click me ..................");
         }
-        void showAlertSuccess(string key, string msg)
-        {
-            ClientScript.RegisterStartupScript(GetType(), key, "showAlertSuccess('" + msg + "');", true);
-        }
-
-        void showAlertError(string key, string msg)
-        {
-            ClientScript.RegisterStartupScript(GetType(), key, "showAlertError('" + msg + "');", true);
-        }
-    }
+        
 }
