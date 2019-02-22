@@ -42,7 +42,9 @@
               <div class="row">
                 <div class="col-sm-6">
                   <asp:Button ID="submit" runat="server" CssClass="btn btn-success btn-block" Text="Submit"
-                    onClick="submit_Click" />
+                    onClick="submit_Click"
+                     OnClientClick="return submitClick();"
+                      />
                 </div>
                 <div class="col-sm-6">
                   <asp:Button ID="cancel" runat="server" CssClass="btn btn-danger btn-block" Text="Cancel" OnClick="cancel_Click" />
@@ -54,4 +56,23 @@
       </div>
     </div>
   </div>
+    <script type="text/javascript">
+    function submitClick() {
+        if (!$('#MainContent_productName').val()) {
+            showAlertError('กรุณากรอกข้อมูลชื่อภาพยนต์');
+            return false;
+        }
+        if (!$('#MainContent_productPrice').val()) {
+            showAlertError('กรุณากรอกข้อมูลความยาวของภาพยนต์(นาที)');
+            return false;
+        }
+        if (isNaN($('#MainContent_productDetail').val())) {
+            showAlertError('กรุณากรอกข้อมูลความยาวของภาพยนต์(นาที) เป็นตัวเลขเท่านั้น');
+            return false;
+        }
+        if (!$('#MainContent_typeProduct').val()) {
+            showAlertError('กรุณาเลือกรูปภาพ');
+            return false;
+        }
+</script>
 </asp:Content>

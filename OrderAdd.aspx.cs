@@ -25,6 +25,19 @@ namespace ShopCafeWebForm
                     showAlertError("null Name","not name");
                     return;
                 }
+                if (string.IsNullOrEmpty(productPrice.Text))
+                {
+                    showAlertError("null Price", "not price");
+                }
+                if (string.IsNullOrEmpty(productDetail.Text))
+                {
+                    showAlertError("null Detail", "not detail");
+
+                }
+                if (string.IsNullOrEmpty(typeProduct.Text))
+                {
+                    showAlertError("null type", "not insert data");
+                }
                 else
                 {
                     OrderRepro movieRepo = new OrderRepro();
