@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Configuration;
+using System.Diagnostics;
+
+
 
 namespace ShopCafeWebForm
 {
     public class OrderRepro
     {
-  
+
         string strConnect = WebConfigurationManager.ConnectionStrings["connStrMyDB"].ConnectionString;
         public DataSet getOrderList()
         {
@@ -23,31 +27,41 @@ namespace ShopCafeWebForm
             ad.Fill(ds);
             return ds;
         }
-
-        
-
-        public void insertOrder(ModelOrder data)
+        void callDb(string cmdText)
         {
             SqlConnection conn = new SqlConnection(strConnect);
-            string cmdText = "INSERT INTO Product(ProductName,ProductPrice,ProductDetail,TypeID) VALUES (@productName,@productPrice,@productDetail,@typeProduct)";
             SqlCommand cmd = new SqlCommand(cmdText, conn);
-            cmd.Parameters.AddWithValue("@productName", data.productName);
-            cmd.Parameters.AddWithValue("@productPrice", data.productPrice);
-            cmd.Parameters.AddWithValue("@productDetail", data.productDetail);
-            cmd.Parameters.AddWithValue("@typeProduct", data.typeProduct);
-
             conn.Open();
             cmd.ExecuteNonQuery();
             conn.Close();
             conn.Dispose();
+        }
 
+
+        public void insertOrder(ModelOrder data)
+        {
+            Debug.WriteLine(data.ProductName);
+            Debug.WriteLine(data.ProductPrice);
+            Debug.WriteLine(data.ProductDetail);
+            Debug.WriteLine(data.TypeProduct);
+
+
+            SqlConnection conn = new SqlConnection(strConnect); 
+            string cmdTextRaw = "INSERT INTO Product(ProductName,ProductPrice,ProductDatail,TypeID) VALUES ('"+data.ProductName+"',"+data.ProductPrice+",'"+data.ProductDetail+"',"+data.TypeProduct+")";
+            Debug.WriteLine(cmdTextRaw);
+            callDb(cmdTextRaw);
         }
-        }
+    }
     public class ModelOrder
     {
-        public string productName { get; set; }
-        public int productPrice { get; set; }
-        public string productDetail { get; set; }
-        public int typeProduct { get; set; }
+        private string productName;
+        private int productPrice;
+        private string productDetail;
+        private int typeProduct;
+
+        public string ProductName { get => productName; set => productName = value; }
+        public int ProductPrice { get => productPrice; set => productPrice = value; }
+        public string ProductDetail { get => productDetail; set => productDetail = value; }
+        public int TypeProduct { get => typeProduct; set => typeProduct = value; }
     }
 }

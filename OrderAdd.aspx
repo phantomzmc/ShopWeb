@@ -7,27 +7,27 @@
           <div class="panel-heading">Add Product</div>
           <div class="panel-body">
             <div class="form-group" style="padding : 20px;">
-              <asp:Label runat="server" Text="Product Name" CssClass="control-label col-sm-3"></asp:Label>
-              <div class="col-sm-7">
+              <asp:Label runat="server" Text="Product Name" CssClass="control-label col-sm-2"></asp:Label>
+              <div class="col-sm-10">
                 <asp:TextBox ID="productName" runat="server" CssClass="form-control" placeholder="Name"></asp:TextBox>
               </div>
             </div>
             <div class="form-group" style="padding : 20px;">
-              <asp:Label runat="server" Text="Product Price" CssClass="control-label col-sm-3"></asp:Label>
-              <div class="col-sm-7">
-                <asp:TextBox ID="productPrice" runat="server" CssClass="form-control" placeholder="Price"></asp:TextBox>
+              <asp:Label runat="server" Text="Product Price" CssClass="control-label col-sm-2"></asp:Label>
+              <div class="col-sm-10">
+                <asp:TextBox ID="productPrice" runat="server" CssClass="form-control " placeholder="Price"></asp:TextBox>
               </div>
             </div>
             <div class="form-group" style="padding : 20px;">
-              <asp:Label runat="server" Text="Product Detail" CssClass="control-label col-sm-3"></asp:Label>
-              <div class="col-sm-7">
+              <asp:Label runat="server" Text="Product Detail" CssClass="control-label col-sm-2"></asp:Label>
+              <div class="col-sm-10">
                 <asp:TextBox ID="productDetail" runat="server" CssClass="form-control" placeholder="Detail">
                 </asp:TextBox>
               </div>
             </div>
             <div class="form-group" style="padding : 20px;">
-              <asp:Label runat="server" Text="Product Type" CssClass="control-label col-sm-3"></asp:Label>
-              <div class="col-sm-7">
+              <asp:Label runat="server" Text="Product Type" CssClass="control-label col-sm-2"></asp:Label>
+              <div class="col-sm-10">
                 <asp:DropDownList ID="typeProduct" runat="server" CssClass="form-control">
                   <asp:ListItem Enabled="true" Text="Select Type" Value="0">
                   </asp:ListItem>
@@ -45,8 +45,7 @@
                     onClick="submit_Click" />
                 </div>
                 <div class="col-sm-6">
-                  <asp:Button ID="cancal" runat="server" CssClass="btn btn-danger btn-block" Text="Cancel"
-                    onClick="cancal_Click" />
+                  <asp:Button ID="cancel" runat="server" CssClass="btn btn-danger btn-block" Text="Cancel" OnClick="cancel_Click" />
                 </div>
               </div>
             </div>

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace ShopCafeWebForm
 {
@@ -25,6 +26,8 @@ namespace ShopCafeWebForm
             OrderRepro movieRepo = new OrderRepro();
             GridView1.DataSource = movieRepo.getOrderList();
             GridView1.DataBind();
+            Debug.WriteLine(GridView1);
+            Debug.Write(GridView1);
         }
 
     }
