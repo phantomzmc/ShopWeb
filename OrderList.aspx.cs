@@ -60,5 +60,10 @@ namespace ShopCafeWebForm
         {
             ClientScript.RegisterStartupScript(GetType(), key, "showAlertError('" + msg + "');", true);
         }
+
+        protected void btnEdit_Click()
+        {
+
+        }
     }
 }

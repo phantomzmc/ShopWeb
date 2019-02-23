@@ -7,6 +7,18 @@
                         <asp:BoundField DataField="ProductID" HeaderText="ProductID"/>
                         <asp:BoundField DataField="ProductName" HeaderText="ProductName"/>
                         <asp:BoundField DataField="ProductPrice" HeaderText="ProductPrice"/>
+                        <asp:TemplateField HeaderText="Edit">
+                            <ItemTemplate>
+                                <asp:Button 
+                                    CssClass="btn btn-warning"
+                                    onClientClick="return confirm('You're whan Edit Item ??')"
+                                    ID="btnEdit"
+                                    onClick="btnEdit_Click"
+                                    Text="Edit"
+                                    runat="server"
+                                    />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="ลบ">
                             <ItemTemplate>
                                 <asp:Button

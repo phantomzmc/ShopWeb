@@ -36,8 +36,6 @@ namespace ShopCafeWebForm
             conn.Close();
             conn.Dispose();
         }
-
-
         public void insertOrder(ModelOrder data)
         {
             SqlConnection conn = new SqlConnection(strConnect);
@@ -52,6 +50,18 @@ namespace ShopCafeWebForm
             string cmdDel = "DELETE FROM Product WHERE ProductID = " + id;
             Debug.WriteLine(id);
             callDb(cmdDel);
+        }
+        public void editOrder(ModelOrder data , int id)
+        {
+            SqlConnection conn = new SqlConnection(strConnect);
+            string cmdEdit = "UPDATE Product SET " +
+                                "ProductName = '" + data.ProductName + "'" +
+                                "ProductPrice = " + data.ProductPrice + "" +
+                                "ProductDetail = '" + data.ProductPrice + "'" +
+                                "TypeProduct = " + data.TypeProduct + "" +
+                             "WHERE ProductID = " + id + "";
+            callDb(cmdEdit);
+
         }
     }
     public class ModelOrder

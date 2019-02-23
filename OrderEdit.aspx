@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderAdd.aspx.cs" Inherits="ShopCafeWebForm.OrderAdd" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditCoffee.aspx.cs" Inherits="ShopCafeWebForm.EditCoffee" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
     <div class="row">
@@ -75,4 +75,4 @@
         return false;
       }
   </script>
-</asp:Content>
+</asp:Content> 
