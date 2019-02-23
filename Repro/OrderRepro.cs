@@ -16,16 +16,19 @@ namespace ShopCafeWebForm
     {
 
         string strConnect = WebConfigurationManager.ConnectionStrings["connStrMyDB"].ConnectionString;
-        public DataSet getOrderList()
+        DataSet callDbWithValue(string cmdText)
         {
-            string strSQL = "SELECT * FROM Product";
-
             SqlConnection conn = new SqlConnection(strConnect);
             DataSet ds = new DataSet();
-            SqlCommand sqlCmd = new SqlCommand(strSQL, conn);
+            SqlCommand sqlCmd = new SqlCommand(cmdText, conn);
             SqlDataAdapter ad = new SqlDataAdapter(sqlCmd);
             ad.Fill(ds);
             return ds;
+        }
+        public DataSet getOrderList()
+        {
+            string strSQL = "SELECT * FROM Product";
+            return callDbWithValue(strSQL);
         }
         void callDb(string cmdText)
         {
@@ -51,21 +54,36 @@ namespace ShopCafeWebForm
             Debug.WriteLine(id);
             callDb(cmdDel);
         }
-        public void editOrder(ModelOrder data , int id)
+
+        public DataSet getOrderById(int id)
         {
+            string cmdText = "SELECT * FROM Product WHERE ProductID = " + id;
+            return callDbWithValue(cmdText);
+        }
+        public void updateOrder(ModelOrder data , int id)
+        {
+            Debug.WriteLine("editOrder");
+
             SqlConnection conn = new SqlConnection(strConnect);
             string cmdEdit = "UPDATE Product SET " +
-                                "ProductName = '" + data.ProductName + "'" +
-                                "ProductPrice = " + data.ProductPrice + "" +
-                                "ProductDetail = '" + data.ProductPrice + "'" +
-                                "TypeProduct = " + data.TypeProduct + "" +
+                                "ProductName = '" + data.ProductName + "'," +
+                                "ProductPrice = " + data.ProductPrice + "," +
+                                "ProductDatail = '" + data.ProductPrice + "' " +
+                               // "TypeID = " + data.TypeProduct + " " +
                              "WHERE ProductID = " + id + "";
+            Debug.WriteLine(cmdEdit);
             callDb(cmdEdit);
 
+        }
+
+        internal void updateOrder(ModelOrder data)
+        {
+            throw new NotImplementedException();
         }
     }
     public class ModelOrder
     {
+        private int id;
         private string productName;
         private int productPrice;
         private string productDetail;
@@ -75,5 +93,6 @@ namespace ShopCafeWebForm
         public int ProductPrice { get => productPrice; set => productPrice = value; }
         public string ProductDetail { get => productDetail; set => productDetail = value; }
         public int TypeProduct { get => typeProduct; set => typeProduct = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

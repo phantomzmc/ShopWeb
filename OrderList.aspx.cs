@@ -51,6 +51,13 @@ namespace ShopCafeWebForm
                 showAlertError("alertErr", ex.Message);
             }
         }
+        protected void btnEdit_Click(object sender, EventArgs e)
+        {
+            var btnEdit = (Button)sender;
+            var row = (GridViewRow)btnEdit.NamingContainer;
+            int id = int.Parse(row.Cells[0].Text);
+            Response.Redirect("~/OrderEdit.aspx?id=" + id);
+        }
         void showAlertSuccess(string key, string msg)
         {
             ClientScript.RegisterStartupScript(GetType(), key, "showAlertSuccess('" + msg + "');", true);
@@ -61,9 +68,6 @@ namespace ShopCafeWebForm
             ClientScript.RegisterStartupScript(GetType(), key, "showAlertError('" + msg + "');", true);
         }
 
-        protected void btnEdit_Click()
-        {
 
-        }
     }
 }

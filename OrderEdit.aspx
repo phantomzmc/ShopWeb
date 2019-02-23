@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EditCoffee.aspx.cs" Inherits="ShopCafeWebForm.EditCoffee" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrderEdit.aspx.cs" Inherits="ShopCafeWebForm.EditCoffee" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
     <div class="row">
@@ -41,13 +41,10 @@
             </div>
             <div style="padding : 20px;">
               <div class="row">
+                  
                 <div class="col-sm-6">
                   <asp:Button ID="submit" runat="server" CssClass="btn btn-success btn-block" Text="Submit"
-                    onClick="submit_Click" OnClientClick="return submitClick();" />
-                </div>
-                <div class="col-sm-6">
-                  <asp:Button ID="cancel" runat="server" CssClass="btn btn-danger btn-block" Text="Cancel"
-                    OnClick="cancel_Click" />
+                    onClick="btnSubmit_Click" />
                 </div>
               </div>
             </div>
